@@ -103,7 +103,7 @@
 
         <v-col cols="12">
           <v-card-actions class="d-flex justify-center">
-            <v-btn color="red" outlined to="/home" exact class="mx-2">
+            <v-btn color="red" outlined to="/" exact class="mx-2">
               Back
             </v-btn>
             <v-btn color="grey" class="mx-2" outlined @click=generateReport()>
