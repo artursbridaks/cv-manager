@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Models\UserData;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
 class UserDataController extends Controller
@@ -35,7 +34,6 @@ class UserDataController extends Controller
         ]);
 
         if ($validator->fails()) {
-
             return response()->json([
                 'status' => 422,
                 'error' => $validator->messages()
@@ -52,7 +50,8 @@ class UserDataController extends Controller
         if ($usersData) {
             return response()->json([
                 'status' => 200,
-                'userData' => 'User data created successfully!'
+                'userData' => 'User data created successfully!',
+                'userDataId' => $usersData->id
             ], 200);
         } else {
             return response()->json([
@@ -141,7 +140,7 @@ class UserDataController extends Controller
             return response()->json([
                 'status' => 200,
                 'message' => 'Data deleted successfully!'
-            ], 500);
+            ], 200);
         } else {
             return response()->json([
                 'status' => 404,
