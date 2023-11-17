@@ -52,7 +52,7 @@
                 <v-btn color="primary" :to="{ path: `/users-data/${user.id}/edit` }" exact text>
                   Edit
                 </v-btn>
-                <v-btn color="red" @click="showDeleteConfirmation = true" exact text>
+                <v-btn color="red" @click="prepareToDelete(user.id)" exact text>
                   Delete
                 </v-btn>
 
@@ -88,6 +88,7 @@ export default {
   name: 'MainPage',
 
   data: () => ({
+    selectedUserId: null,
     showDeleteConfirmation: false,
     isLoading: false,
     userData: [],
@@ -95,7 +96,9 @@ export default {
   }),
   mounted() {
     this.getUserData();
-    this.getEmploymentData();
+    if (this.employment && this.employment.length > 0) {
+      this.getEmploymentData();
+    }
   },
   computed: {
     userDataWithEmployment() {
@@ -127,10 +130,14 @@ export default {
         .catch(error => console.error('Error fetching employment data:', error))
         .finally(() => this.isLoading = false);
     },
-    deleteCard(id) {
+    prepareToDelete(userId) {
+      this.selectedUserId = userId;
+      this.showDeleteConfirmation = true;
+    },
+    deleteCard() {
       this.showDeleteConfirmation = false;
 
-      axios.delete(`http://127.0.0.1:8000/api/users-data/${id}/delete`)
+      axios.delete(`http://127.0.0.1:8000/api/users-data/${this.selectedUserId}/delete`)
         .then(response => {
           response
           this.getUserData()
