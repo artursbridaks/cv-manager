@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app color="primary" dark>
-      <router-link to="/home" class="d-flex align-center" tag="div">
+      <router-link to="/" class="d-flex align-center" tag="div">
         <img alt="Save CV Logo" src="../src/assets/CV_Logo.png" contain height="50" class="pr-4">
         <h1>CV Manager</h1>
       </router-link>
@@ -19,7 +19,7 @@ export default {
 
   data: () => ({
     //
-  }),
+  })
 };
 </script>
 
