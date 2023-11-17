@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     name: 'home',
     component: HomeView
   },
@@ -21,7 +21,7 @@ const routes = [
     component: () => import('../views/EditCvView.vue')
   },
   {
-    path: '/users-data/:id',
+    path: '/users-data/:id/view',
     name: 'viewCv',
     component: () => import('../views/ViewCvView.vue')
   }
