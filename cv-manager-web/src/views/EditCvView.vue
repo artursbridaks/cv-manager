@@ -223,7 +223,7 @@
 
         <v-col class="mb-5" cols="12">
           <v-col class="mb-8">
-            <v-btn color="red" to="/home" exact>
+            <v-btn color="red" to="/" exact>
               Back to home
             </v-btn>
           </v-col>
